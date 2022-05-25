@@ -1,6 +1,5 @@
 import bcrypt from "bcrypt";
-import { logger } from "../utils/winston";
-import User from "../schema/user.schema";
+import { logger } from "../utils/winston/index.js";
 
 export const encryptPassword = async (password) => {
 	try {
