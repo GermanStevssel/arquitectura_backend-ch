@@ -1,6 +1,6 @@
 import Products from "../schema/products.schema.js";
 
-export const renderCartProducts = async (user) => {
+export const renderCartProducts = async (res, user) => {
 	const userCart = await user.cart;
 	const cartArray = await Promise.all(
 		userCart.map(async (elem) => {
@@ -14,7 +14,7 @@ export const renderCartProducts = async (user) => {
 	res.render("cart", { cartArray });
 };
 
-export const deleteProductInCart = async (user, item) => {
+export const deleteProductInCart = async (res, user, item) => {
 	const userCart = await user.cart;
 
 	for (let index = 0; index < userCart.length; index++) {

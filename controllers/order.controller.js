@@ -5,7 +5,7 @@ export const checkout = async (req, res) => {
 	const user = req.user;
 
 	try {
-		confirmOrder(user);
+		confirmOrder(res, user);
 	} catch (err) {
 		logger.error(`Error al generar pedido. ${err}`);
 		return res.status(500).json({ error_description: "Error del servidor." });

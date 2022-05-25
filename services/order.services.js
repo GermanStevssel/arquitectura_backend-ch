@@ -4,7 +4,7 @@ import moment from "moment";
 import { checkOutSms, checkOutWhatsapp } from "../utils/sms_wsp.js";
 import { checkOutEmail } from "../utils/mail.js";
 
-export const confirmOrder = async (user) => {
+export const confirmOrder = async (res, user) => {
 	const productsInCart = await Promise.all(
 		user.cart.map(async (elem) => {
 			const product = await Products.findById(elem.product);
@@ -27,6 +27,5 @@ export const confirmOrder = async (user) => {
 	checkOutWhatsapp(order, user.phone);
 	await user.save();
 	await order.save();
-
 	res.redirect("/api/order/orderSuccess");
 };
